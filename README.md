@@ -3,3 +3,5 @@
 - snack.expo.io
 
 # DAY1 : Is Loaded? if not, Display View
+
+# DAY2 : Create Weather.js
