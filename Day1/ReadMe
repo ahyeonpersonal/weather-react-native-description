@@ -17,3 +17,6 @@ isLoaded : false
   <View>
     <Text>Getting Wether</Text> </View>
 )}
+
+
+//4. Creating 'loading' ,'loadingText' stylesheet
