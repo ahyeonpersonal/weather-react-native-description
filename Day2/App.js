@@ -7,7 +7,7 @@ export default class App extends React.Component {
 
   /* 2. If is is loaded it's gonna show weather, If not it's gonna show loading view */
   state={
-    isLoaded : true //7.to load 'Weather.js'
+    isLoaded : true //8.to load 'Weather.js'
 
   }
 
