@@ -1,0 +1,19 @@
+# Is Loaded? if not, Display <View>
+
+1. import 'ActivityIndicator' 
+#2
+
+2. If it is loaded it's gonna show weather, If not it's gonna show loading view
+#8-11
+state={
+isLoaded : false
+}
+
+3. Is it loaded? 
+      True => we don't have anything to show yet so 'null'
+      False => show <view>
+#23-25
+{isLoaded ? null : (
+  <View>
+    <Text>Getting Wether</Text> </View>
+)}
