@@ -20,6 +20,7 @@ export default class Weather extends Component {
       <Text style={style.title}>Raining like S**T</Text>
       <Text style={style.subtitle}>For more info look outside</Text>
      </View>
+      
     </LinearGradient>
     );
   }
