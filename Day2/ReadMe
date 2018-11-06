@@ -1,0 +1,18 @@
+Create Weather.js
+
+5. Create Weather.js
+
+6. Import Weather.js to App.js
+App.js #3
+
+7. if isLoaded true => display <Weather />
+App.js #25)
+
+{isLoaded ? <Weather /> : (  
+          <View style={styles.loading}>
+            <Text style={styles.loadingText}>Getting weather</Text>
+          </View>  
+)}
+
+8. To load <Weather /> set default isLoaded as 'True'
+App.js #10
