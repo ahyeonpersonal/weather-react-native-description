@@ -2,4 +2,4 @@
 
 - snack.expo.io
 
-Creating weather app with react native step by step
+# DAY1 : Is Loaded? if not, Display <View>
