@@ -1,0 +1,12 @@
+#12. import StatusBar
+App.js #2, App.js #25
+<StatusBar hidden={true} />
+
+#13. import Ion icons from expo.github.ic/vector
+Weather.js #5, Weather.js #16
+<Ionicons color="white" size={144} name="ios-rainy" />
+
+#14. upper backgroundColor:"transparent";
+Since icon-rainy is invisible from upper background color, set background as transparent
+Weather.js #41
+backgroundColor:"transparent"
