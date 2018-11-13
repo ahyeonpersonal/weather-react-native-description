@@ -12,6 +12,8 @@ export default class App extends React.Component {
     //15. isLoaded : Ture = Displaying Weather.js (weather information)
     //15. isLoaded : false = Displaying loading page
     //Once it gets the weather information =>  it set it as True and disply the weather information
+    ,
+    error:null //19. add error:null in state
 };
   
   //16. Get current position geolocation
@@ -21,14 +23,16 @@ export default class App extends React.Component {
         //17. once it gets the current location information, is Loaded : true = means, it will displaying Weather.js 
         this.setState({
           isLoaded: true
-          //error:"Something went wrong" //20.Add error
+          //20. Add error
+          //error:erro
+          //error:"Something went wrong" //24.set error as "Something went wrong" to check errorText
         }); 
         //console.log(position);
       },
       //18. If there is error, console log the 'error'
       
       error =>{
-        //19. delete console.log(error)
+        //19. delete console.log(error), add 'error' in state
         //console.log(error);
 
         //21. changing error state
