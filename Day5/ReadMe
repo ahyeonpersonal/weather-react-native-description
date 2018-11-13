@@ -1,0 +1,29 @@
+#15. Chagne isLoaded to false
+App.js #10
+=> isLoaded : True
+Displaying Weather.js
+-> is Loaded : False
+Displaying 'loading page' 
+
+For now, set it as 'false', and once App gets the current location information, change it to 'True', which menas displaying weather.js (weather information)
+
+#16. Get current position geolocation
+App.js #18~
+
+navigator.getlocation.getCurrentPosition(function(position){
+  console.log(position)
+})
+
+#17. When they get the location, set isLoaded : True
+App.js #22~
+
+#18. If there is any error, geting getlocation, display Error
+App.js #28
+error=>{
+  console.log(error);
+}
+
+#NEXT STEP
+1. Send current location information to API, 
+2. With API, get the weather, 
+3. Show an actualy weather view
