@@ -34,7 +34,7 @@ export default class App extends React.Component {
         //console.log(error);
 
         this.setState({
-         //20. add Error
+         //21. add Error
          //error:error
         //24.set error as "Something went wrong" to check errorText
           error:"Oops, something went wrong"
