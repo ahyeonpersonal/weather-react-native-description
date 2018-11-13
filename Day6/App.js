@@ -23,9 +23,7 @@ export default class App extends React.Component {
         //17. once it gets the current location information, is Loaded : true = means, it will displaying Weather.js 
         this.setState({
           isLoaded: true
-          //20. Add error
-          //error:error
-          //error:"Something went wrong" //24.set error as "Something went wrong" to check errorText
+          
         }); 
         //console.log(position);
       },
@@ -35,9 +33,11 @@ export default class App extends React.Component {
         //19. delete console.log(error), add 'error' in state
         //console.log(error);
 
-        //21. changing error state
         this.setState({
-          error:error
+         //20. add Error
+         //error:error
+        //24.set error as "Something went wrong" to check errorText
+          error:"Oops, something went wrong"
         })
         
       }
