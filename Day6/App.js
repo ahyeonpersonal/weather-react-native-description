@@ -13,7 +13,7 @@ export default class App extends React.Component {
     //15. isLoaded : false = Displaying loading page
     //Once it gets the weather information =>  it set it as True and disply the weather information
     ,
-    error:null //19. add error:null in state
+    error:null //20. add error:null in state
 };
   
   //16. Get current position geolocation
