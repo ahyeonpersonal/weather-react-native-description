@@ -1,0 +1,33 @@
+#27 import API KEY
+App.js #5
+const API_KEY = " ";
+
+#28. Create new function called _getWeather ( edit API KEY as well )
+App.js #61~
+_getWEather = (lat, long) =>{
+  fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&APPID=${API_KEY}`)
+  .then(response=>response.json()) // make data to readable json file
+}
+
+#29. get latitude, longtidue information from navigator.geolocation.getCurrentPostiion() 
+App.js #30
+this.getWeather(position.coords.latitude, position.coords.longtidude)
+
+#30. create temperature, name
+App.js #20,21
+state={
+  temperature : null,
+  name:null
+}
+
+//#31. delete console.log(json);
+App.js #66
+//console.log(json)
+
+#32. get the temperatrue, name in readable json file
+App.js #69~
+this.setState({
+  temperature : json.main.temp,
+  name:json.weather[0].main,
+  isLoaded:true
+})
