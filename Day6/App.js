@@ -24,7 +24,7 @@ export default class App extends React.Component {
         this.setState({
           isLoaded: true
           //20. Add error
-          //error:erro
+          //error:error
           //error:"Something went wrong" //24.set error as "Something went wrong" to check errorText
         }); 
         //console.log(position);
