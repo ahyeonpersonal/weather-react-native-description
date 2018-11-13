@@ -1,0 +1,27 @@
+#19. Delete console.log(error) instead, we are going to display it on Screen
+App.js #34
+//console.log(error);
+
+#20,#21. Instead of displaying Error in console log, we are going to display on screen. 
+So we need to state 'error' in state, #21this.setState
+App.js #16, #36
+
+state={
+  error:null
+}
+error=>{
+  this.setState({
+  })
+}
+
+#22. Add Error in const
+App.js #54
+const{isLoaded, error} = this.state;
+
+#23. If there is an error, I will display {error}, otherwise, null
+App.js #68
+{error? <Text style={styles.errorText}>{error}</Text> : null}
+
+#24. update error
+App.js #40
+error : "Opps, Something went wrong"
