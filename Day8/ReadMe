@@ -1,2 +1,87 @@
-4-2
-15:31
+#33.  Refactoring : Changing the code structure
+Since Weather.js is stateless component, we can directly get it from function
+we can directly get info from function Weather
+=> Delete code from Weather.js #59 - #82
+
+#34 Refactoring start 
+Weather.js #85
+
+function Weather () =>{
+  return(
+    <Linear Gradient style={style.container} >
+      <View style={style.upper}> 
+        <Ionicons color="white" size={144} name="ios-rainy" /> 
+        <Text style={style.temp}>Temperature here</Text>
+      </View>
+      
+      <View style={style.lower}>
+      <Text style={style.title}>Raining like S**T</Text>
+      <Text style={style.subtitle}>For more info look outside</Text>
+     </View>
+    </Linear Gradient>
+  );
+}
+
+#35.
+To refactoring, basically, we need 3things
+1) Icon
+2) Temperature
+3) Title & Subtitle
+(=> and these 3 are called by 'props')
+
+#37) Temperature
+add {Temp} and replace 'Temperature here' to {temp}
+Weather.js #37
+
+function Weather({temp}){
+  #38) Weather.js #92
+  <Text style={styles.temp}> {temp} </Text>
+}
+
+#39) Get 'temperature' information from App.js
+App.js #81
+const{isLoaded, error, temperature_=this.state
+
+#40) Give 'temperature' to <Weather />
+App.js #92
+<Weather temp={temperature} />
+
+#41) Change F to C
+App.js #92
+<Weather temp{Math.floor(temperature - 273.15)} />
+
+#42) Create WeatherCases
+Weather.js #9 - #52
+
+#43) Update icon, colors, title, subtitle in Weather.js so we can see on Screen
+Weather.js #89, #91, #97, #98
+color = {weatherCases["Clear"].colors}
+icon = {weatherCases["Clear"].icon}
+{weatherCases["Clear"].title}
+{weatherCases["Clear"].subtitle}
+
+#44. with the weatherCases["Clear"].icon/ .colors / .title / .subtitle 
+we can check if those informations are actually loaded from weatherCases
+but what we need is not only "Claear" icon/colors/title/subtitle, but we need actually weather information from weatherName
+and we need to get weatherName from App.js
+
+#45 add name in const
+App.js #81
+const {isLoaded, error, temperature, name} = this.state;
+
+#46. Give name to <Weather />
+App.js #92
+<Weather temp={temperatrue} weatherName={name} />
+
+#47. Give weatherName info to weather.js
+Weather.js #85
+function Weather({Temp, weatherName})
+
+#48. with console.log we can check if weatherName is actually loaded
+Weather.js #87
+console.log(weatherName);
+
+#49. replace all "Clear" to weatherName
+Weather.js #89, #91, #97, #98
+
+
