@@ -5,7 +5,7 @@ import {LinearGradient} from "expo";
 import {Ionicons} from "@expo/vector-icons";
 
 
-//38. Create weatherCases
+//42. Create weatherCases
 const weatherCases = {
     Rain :{
         colors:["#00C6FB", "#005BEA"], //Gradient color
@@ -42,6 +42,12 @@ const weatherCases = {
         title:"Drizzle",
         subtitle : "Kinda foggy?!",
         icon : 'ios-rainy-outline'
+    },
+    Haze:{
+        colors:["#00C6FB", "#005BEA"],
+        title:"Haze",
+        subtitle : "Kinda foggy?!",
+        icon : 'Haze'
     }
 }
 
@@ -76,21 +82,26 @@ const weatherCases = {
 //}
 
 // 34. Refactoring start
-function Weather({temp}){ //37. Add {temp} and replace 35 to {temp} 
-    return( //39.Update icon, colors, title, subtitle
-        <LinearGradient colors={weatherCases["Clear"].colors} style={style.container} >
+function Weather({temp, weatherName}){ //37. Add {temp} and replace 35 to {temp} //47. add weatherName
+    //48. Check if weatherName is correctly loaded or not, using console.log
+    console.log(weatherName);
+    return( //43.Update icon, colors, title, subtitle : {weatherCases["Clear"].icon / .title / .subtitle }
+        <LinearGradient /*colors={weatherCases["Clear"].colors}*/ colors={weatherCases[weatherName].colors} style={style.container} > //49-1. update "clear" to weatherName
             <View style={styles.upper}>
-                <Ionicons color="white" size={144} name={weatherCases["Clear"].icon} />
+                <Ionicons color="white" size={144} /*name={weatherCases["Clear"].icon} */  /*49-2*/ name={weatherCases[weatherName].icon} /> 
                 <Text style={styles.temp}>{temp}</Text> 
+                // 38. import {temp} instead of number
             </View>
             
             <View style={styles.lower}>
-                <Text style={styles.title}>{weatherCases["Clear"].title}</Text> 
-                <Text style={styles.subtitle}>{weatherCases["Clear"].subtitle}/Text>
+                <Text style={styles.title}> /* {weatherCases["Clear"].title} */ /*49-3*/ {weatherCases[weatherName].title}</Text> 
+                <Text style={styles.subtitle}> /*{weatherCases["Clear"].subtitle}*/ /*49-4*/ {weatherCases[weatherName].subtitle} </Text>
             </View>
         </LinearGradient> 
     );
 }
+//44. Now instead of input single 'cloud', 'clear' ...etc, we need to get those information from Name
+//44. go to App.js
 
 export default Weather;
 //34. Refactoring end
