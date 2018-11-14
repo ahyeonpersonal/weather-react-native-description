@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Text, View, StyleSheet, ActivityIndicator, StatusBar } from 'react-native'; //1. import ActivityIndicator : loading GIF, //12-1. import StatusBar
 import Weather from "./Weather"; //6. import Weather.js
-
+//27. import API KEY
+const API_KEY = "18fff390d86582a57fabf47a890d2816";
 
 export default class App extends React.Component {
 
@@ -13,18 +14,25 @@ export default class App extends React.Component {
     //15. isLoaded : false = Displaying loading page
     //Once it gets the weather information =>  it set it as True and disply the weather information
     ,
-    error:null //20. add error:null in state
+    error:null, //20. add error:null in state
+    
+    //30. Create temperature, name
+    temperature: null,
+    name:null
 };
   
   //16. Get current position geolocation
   componentDidMount(){
     navigator.geolocation.getCurrentPosition(
       position =>{
+        
+        //29. get _getWeather function
+          this._getWeather(position.coords.latitude, position.coords.longitude)
+        
         //17. once it gets the current location information, is Loaded : true = means, it will displaying Weather.js 
-        this.setState({
-          isLoaded: true
-          
-        }); 
+        //this.setState({
+        //  isLoaded: true,
+        //}); 
         //console.log(position);
       },
       //18. If there is error, console log the 'error'
@@ -49,10 +57,29 @@ export default class App extends React.Component {
   navigator.geolocation.getCurrentPosition(function(position){console.log(position)})
    */
 
+  //28. Create new function called 'getWeather'
+  _getWeather = (lat, long) => { 
+    fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&APPID=${API_KEY}`)
+    .then(response => response.json())
+    .then(json=>{
+      //31. delete console.log(json)
+      //console.log(json)
+
+      //32. Call temperature, name from json file
+      this.setState({
+        temperature:json.main.temp,
+        name:json.weather[0].main,
+        isLoaded:true
+      })
+    });
+  };
+
+
+  
   render() {
 
-    const {isLoaded, error} = this.state; //22. add Error
-
+    const {isLoaded, error, temperature, name} = this.state; //22. add Error //39. Add temperature and give <Weather > a temperature info(40) 
+      //45. add name and give it to Weather.js (46)
     return (
       <View style={styles.container}>
       {/* 3. Is it loaded? 
@@ -61,9 +88,13 @@ export default class App extends React.Component {
       */}
       {/* 7. import <Weather /> when it's loaded, to do that change state as 'true' as well*/}
         <StatusBar hidden={true} /> {/* 12-2. import status Bar*/}
-        //36. Givg <Weather /> temperature information & //37.Change F to C
-        {isLoaded ? <Weather temp={Math.floor(temperature - 273.15)} /> : (  
-          <View style={styles.loading}>
+        {isLoaded ? (
+        <Weather temp={Math.floor(temperature - 273.15)} weatherName={name} /> 
+            //40. Get 'temp={temperatrue} information 
+            //41. Change F to C Math.floor() ; 
+            //46. get weatherName = {name} and give it to Weather.js as well (47)
+        ) : (  
+            <View style={styles.loading}  />)
             <Text style={styles.loadingText}>Getting weather</Text>
             //23. If there is an error, i will display {error}, otherwise, null
             {error ? <Text style={styles.errorText}>{error}</Text> : null} 
@@ -96,3 +127,11 @@ const styles = StyleSheet.create({
     marginBottom: 24
   }
 });
+
+
+/*
+NEXT STEP
+1. Send current location information to API, 
+2. With API, get the weather, 
+3. Show an actualy weather view
+ */
